@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     selectVideo() {
-      this.$emit("selectVideo", this.video);
+      this.$store.dispatch('selectVideo', this.video);
     }
   }
 }
@@ -35,6 +35,8 @@ export default {
 
   img {
     margin-right: 10px;
+    min-width: 320px;
+    height: 180px;
   }
 
   li > div {

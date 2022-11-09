@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" v-model="keyword" placeholder="검색할 영상의 제목을 입력하세요" />
+    <input type="text" @keyup.enter="search" v-model="keyword" placeholder="검색할 영상의 제목을 입력하세요" />
     <button @click="search">검색</button>
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
     },
     methods: {
         search() {
-            this.$emit('search', this.keyword);
+            this.$store.dispatch('search', this.keyword);
         },
     }
 }

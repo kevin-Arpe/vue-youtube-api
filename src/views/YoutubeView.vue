@@ -2,6 +2,8 @@
   <div>
     <h2>YouTube API</h2>
     <youtube-search @search="search"></youtube-search>
+    <hr>
+    <youtube-video-detail></youtube-video-detail>
     <youtube-search-result :videos="videos" @selectVideo="selectVideo"></youtube-search-result>
   </div>
 </template>
@@ -9,6 +11,7 @@
 <script>
 import YoutubeSearch from '@/components/youtube/YoutubeSearch.vue';
 import YoutubeSearchResult from '@/components/youtube/YoutubeSearchResult.vue';
+import YoutubeVideoDetail from '@/components/youtube/YoutubeVideoDetail.vue';
 import axios from 'axios';
 
 export default {
@@ -22,10 +25,11 @@ export default {
     components: {
         YoutubeSearch,
         YoutubeSearchResult,
+        YoutubeVideoDetail,
     },
     methods: {
         search(keyword) {
-            const API_URL = "https://www.googleapis.com/youtube/v3/search";
+            const API_URL = process.env.VUE_APP_YOUTUBE_API_URL;
             const API_KEY = process.env.VUE_APP_YOUTUBE_API_KEY;
             axios({
                 url: API_URL,
